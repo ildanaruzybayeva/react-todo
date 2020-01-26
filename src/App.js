@@ -14,8 +14,10 @@ export default function App() {
     setItems([...items, text]);
   };
 
-  const deleteItem = index => {
-    const updatedList = [...items].filter(item => item.index !== index);
+  const deleteItem = id => {
+    console.log(id);
+    const updatedList = [...items].filter((item, index) => index !== id);
+    console.log(items);
     setItems(updatedList);
   };
 
@@ -27,10 +29,10 @@ export default function App() {
       <button onClick={handleSubmit} type="submit">
         Add a todo
       </button>
-      {items.map((item, index) => (
-        <li key={index}>
+      {items.map((item, id) => (
+        <li key={id}>
           {item}
-          <button onClick={deleteItem}>X</button>
+          <button onClick={() => deleteItem(id)}>X</button>
         </li>
       ))}
     </div>
