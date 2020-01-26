@@ -14,15 +14,24 @@ export default function App() {
     setItems([...items, text]);
   };
 
+  const deleteItem = index => {
+    const updatedList = [...items].filter(item => item.index !== index);
+    setItems(updatedList);
+  };
+
   return (
     <div className="todo-app">
       <h1>Todo App</h1>
+      <p>You have {items.length} todos left</p>
       <input type="text" value={text} onChange={handleChange} />
       <button onClick={handleSubmit} type="submit">
         Add a todo
       </button>
       {items.map((item, index) => (
-        <li key={index}>{item}</li>
+        <li key={index}>
+          {item}
+          <button onClick={deleteItem}>X</button>
+        </li>
       ))}
     </div>
   );
