@@ -5,7 +5,7 @@ export default function App() {
   const [text, setText] = useState("");
   const [items, setItems] = useState([]);
 
-  const handleChange = event => {
+  const handleChange = (event) => {
     setText(event.target.value);
   };
 
@@ -14,7 +14,7 @@ export default function App() {
     setItems([...items, text]);
   };
 
-  const deleteItem = id => {
+  const deleteItem = (id) => {
     console.log(id);
     const updatedList = [...items].filter((item, index) => index !== id);
     console.log(items);
@@ -25,7 +25,12 @@ export default function App() {
     <div className="todo-app">
       <h1>Todo App</h1>
       <p>You have {items.length} todos left</p>
-      <input type="text" value={text} onChange={handleChange} />
+      <input
+        type="text"
+        aria-label="input-label"
+        value={text}
+        onChange={handleChange}
+      />
       <button onClick={handleSubmit} type="submit">
         Add a todo
       </button>
